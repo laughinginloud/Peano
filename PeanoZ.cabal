@@ -1,0 +1,46 @@
+cabal-version: 1.12
+
+name:           PeanoZ
+version:        0.1.0.0
+description:    Progetto con l'estensione degli assiomi di Peano agli interi.
+homepage:       https://github.com/laughinginloud/PeanoZ#readme
+bug-reports:    https://github.com/laughinginloud/PeanoZ/issues
+author:         Mattia Martelli
+maintainer:     mattia.martelli@live.it
+copyright:      2020 Mattia Martelli
+license:        GPLv3
+license-file:   LICENSE
+build-type:     Simple
+extra-source-files:
+    README.md
+    ChangeLog.md
+
+source-repository head
+  type: git
+  location: https://github.com/laughinginloud/PeanoZ
+
+library
+  exposed-modules:
+      PeanoZ
+  other-modules:
+      Paths_PeanoZ
+  hs-source-dirs:
+      src
+  build-depends:
+      base >=4.7 && <5
+    , flow
+  default-language: Haskell2010
+
+test-suite PeanoZ-test
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  other-modules:
+      Paths_PeanoZ
+  hs-source-dirs:
+      test
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      PeanoZ
+    , base >=4.7 && <5
+    , ansi-terminal
+  default-language: Haskell2010

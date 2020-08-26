@@ -8,12 +8,13 @@ data Intero = Zero | Successivo Intero | Precedente Intero
     deriving (Show, Read, Eq)
 
 normalizza :: Intero -> Intero
-normalizza = \case
-    Zero                      -> Zero
-    Precedente (Successivo x) -> normalizza x
-    Successivo (Precedente x) -> normalizza x
-    Precedente x              -> Precedente (normalizza x)
-    Successivo x              -> Successivo (normalizza x)
+normalizza =
+    \case
+        Zero                      -> Zero
+        Precedente (Successivo x) -> normalizza x
+        Successivo (Precedente x) -> normalizza x
+        Precedente x              -> Precedente (normalizza x)
+        Successivo x              -> Successivo (normalizza x)
         
 instance Ord Intero where
     compare x y =
@@ -28,50 +29,45 @@ instance Ord Intero where
 
 instance Num Intero where
     (+) x y =
-        normalizza
-        (
-            case (x, y) of
-                (_, Zero)          -> x
-                (_, Precedente y') -> (Precedente ((+) x y'))
-                (_, Successivo y') -> (Successivo ((+) x y'))
-        )
+        case (x, y) of
+            (_, Zero)          -> x
+            (_, Precedente y') -> Precedente ((+) x y')
+            (_, Successivo y') -> Successivo ((+) x y')
+        |> normalizza
 
     (*) x y =
-        normalizza
-        (
-            case (x, y) of
-                (_, Zero)                    -> Zero
-                (_, Successivo Zero)         -> x
-                (Precedente _, Precedente _) -> (*) (negate x) (negate y)
-                (Precedente _, _)            -> negate ((*) (negate x) y)
-                (_, Precedente _)            -> negate ((*) x (negate y))
-                (_, Successivo y')           -> (+) ((*) x y') x
-        )
+        case (x, y) of
+            (_, Zero)                    -> Zero
+            (_, Successivo Zero)         -> x
+            (Precedente _, Precedente _) -> (*) (negate x) (negate y)
+            (Precedente _, _)            -> negate ((*) (negate x) y)
+            (_, Precedente _)            -> negate ((*) x (negate y))
+            (_, Successivo y')           -> (+) ((*) x y') x
+        |> normalizza
 
     abs =
-        (\case
+        \case
             x@(Precedente _) -> negate x
-            x                -> x
-        ) . normalizza
+            x                -> normalizza x
 
     signum =
-        (\case
+        normalizza .>
+        \case
             Zero         -> 0
             Precedente _ -> -1
             _            -> 1
-        ) . normalizza
 
     fromInteger x
         | x == 0    = Zero
-        | x < 0     = negate (fromInteger (abs x))
+        | x < 0     = negate (fromInteger (-x))
         | otherwise = Successivo (fromInteger (x - 1))
 
-    negate = 
-        (\case
+    negate =
+        normalizza .>
+        \case
             Zero         -> Zero
             Precedente x -> Successivo (negate x)
             Successivo x -> Precedente (negate x)
-        ) . normalizza
 
 instance Enum Intero where
     toEnum = toInteger .> fromInteger
@@ -87,22 +83,14 @@ instance Integral Intero where
               quot = fromInteger (fst res)
               rem = fromInteger (snd res)
 
-    toInteger = \case
-        Zero         -> 0
-        Precedente x -> (toInteger x) - 1
-        Successivo x -> (toInteger x) + 1
+    toInteger =
+        \case
+            Zero         -> 0
+            Precedente x -> (toInteger x) - 1
+            Successivo x -> (toInteger x) + 1
 
 instance Semigroup Intero where
     (<>) = (+)
 
 instance Monoid Intero where
     mempty = Zero
-
-iperoperazione :: (Num a, Eq a) => a -> a -> a -> a
-iperoperazione n a b =
-    case (n, b) of
-        (0, _) -> b + 1
-        (1, 0) -> a
-        (2, 0) -> 0
-        (_, 0) -> 1
-        (_, _) -> iperoperazione (n - 1) a (iperoperazione n a (b - 1))

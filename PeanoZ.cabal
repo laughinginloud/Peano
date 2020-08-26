@@ -8,7 +8,7 @@ bug-reports:    https://github.com/laughinginloud/PeanoZ/issues
 author:         Mattia Martelli
 maintainer:     mattia.martelli@live.it
 copyright:      2020 Mattia Martelli
-license:        GPLv3
+license:        GPL-3
 license-file:   LICENSE
 build-type:     Simple
 extra-source-files:

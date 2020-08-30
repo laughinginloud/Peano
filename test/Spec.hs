@@ -1,4 +1,5 @@
 import PeanoZ
+import PeanoQ
 import System.Console.ANSI
 
 main :: IO ()

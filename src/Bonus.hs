@@ -2,7 +2,6 @@ module Bonus where
 
 import Data.Numbers.Primes
 import Flow
-import PeanoZ
 
 iperoperazione :: (Num a, Eq a) => a -> a -> a -> a
 iperoperazione n a b =

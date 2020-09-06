@@ -1,7 +1,7 @@
 module Bonus where
 
-import Data.Numbers.Primes
-import Flow
+import Data.Numbers.Primes (isPrime)
+import Flow ((|>))
 
 iperoperazione :: (Num a, Eq a) => a -> a -> a -> a
 iperoperazione n a b =

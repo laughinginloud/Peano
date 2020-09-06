@@ -2,7 +2,7 @@
 
 module PeanoZ where
 
-import Flow
+import Flow ((.>), (|>))
 
 data Intero = Zero | Successivo Intero | Precedente Intero
     deriving (Show, Read, Eq)

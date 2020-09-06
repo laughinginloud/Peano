@@ -2,9 +2,9 @@
 
 module PeanoQ where
 
-import GHC.Real
-import Flow
-import PeanoZ hiding (normalizza)
+import GHC.Real (Ratio((:%)))
+import Flow ((.>), (|>))
+import PeanoZ (Intero)
 
 data Razionale = Intero :/ Intero
     deriving (Show, Read, Eq)
@@ -17,7 +17,6 @@ normalizza (x :/ y)
             mcd = gcd x y |> toInteger
             x'  = x |> toInteger |> flip quot mcd |> fromInteger
             y'  = y |> toInteger |> flip quot mcd |> fromInteger
-
 
 instance Ord Razionale where
     compare (x :/ y) (x' :/ y') = compare (x * y') (x' * y)

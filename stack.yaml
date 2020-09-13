@@ -5,7 +5,4 @@ packages:
 
 extra-deps:
   - flow-1.0.21
-  - ansi-terminal-0.11
-  - colour-2.3.5
-  - mintty-0.1.2
   - primes-0.2.1.0

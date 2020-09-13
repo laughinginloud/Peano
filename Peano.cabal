@@ -39,7 +39,6 @@ test-suite Peano-test
   main-is: Test.hs
   other-modules:
       Paths_Peano
-    , Stampa
     , TestZ
   hs-source-dirs:
       test
@@ -47,5 +46,4 @@ test-suite Peano-test
   build-depends:
       Peano
     , base >=4.7 && <5
-    , ansi-terminal
   default-language: Haskell2010

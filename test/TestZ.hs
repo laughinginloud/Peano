@@ -1,14 +1,14 @@
-module TestZ where
+module TestZ (testZ) where
 
-import PeanoZ
-import Stampa
+import PeanoZ (Intero)
+import Control.Monad (when)
+
+testZ :: IO ()
+testZ = do
+    testMonoide
 
 testMonoide :: IO ()
-testMonoide =
-    if all (/= False) (map controllo [min..max])
-    then corretto "Test monoide passato"
-    else errato "Test monoide non passato"
-
+testMonoide = when (any (/= True) (map controllo [min..max])) $ fail "monoide"
     where min = fromInteger (-100) :: Intero
           max = fromInteger 100 :: Intero
           controllo = \x -> (x <> mempty == x) || (mempty <> x == x)

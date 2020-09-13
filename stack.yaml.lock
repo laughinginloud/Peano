@@ -12,27 +12,6 @@ packages:
   original:
     hackage: flow-1.0.21
 - completed:
-    hackage: ansi-terminal-0.11@sha256:97470250c92aae14c4c810d7f664c532995ba8910e2ad797b29f22ad0d2d0194,3307
-    pantry-tree:
-      size: 1461
-      sha256: 4098c4b8bb503fcf0730aedc8247a479d3e22fd1fe4c6b4b2b2b5da30bdfb713
-  original:
-    hackage: ansi-terminal-0.11
-- completed:
-    hackage: colour-2.3.5@sha256:b27db0a3ad40d70bdbd8510a104269f8707592e80757a1abc66a22ba25e5a42f,1801
-    pantry-tree:
-      size: 1183
-      sha256: ff0f5e24e9f669ceedfcae4d11fd6c68820bbaa2e07ab277368946e9b0f6f8a4
-  original:
-    hackage: colour-2.3.5
-- completed:
-    hackage: mintty-0.1.2@sha256:76e5d929619e2fe419dc2292856c5c86fd8f52cb13531b169b1316fc604157c8,2894
-    pantry-tree:
-      size: 526
-      sha256: 9280e4aab60242aa4847d0e6db70a378c910fceb9085d41aa8d10061b3d7a899
-  original:
-    hackage: mintty-0.1.2
-- completed:
     hackage: primes-0.2.1.0@sha256:94885df2e13153e439ca9c6eb1893726776ca7022128fe860278294bad49d6a9,954
     pantry-tree:
       size: 356

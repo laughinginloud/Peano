@@ -1,7 +1,6 @@
-import Stampa
-import TestZ
+import TestZ (testZ)
 
 main :: IO ()
 main = do
-    testMonoide
-    fine
+    testZ
+    putStrLn "Tutti i test superati"

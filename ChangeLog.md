@@ -1,3 +1,3 @@
-# Changelog for PeanoZ
+# Changelog for Peano
 
 ## Unreleased changes

@@ -1,6 +1,6 @@
-name:                PeanoZ
+name:                Peano
 version:             0.1.0.0
-github:              "laughinginloud/PeanoZ"
+github:              "laughinginloud/Peano"
 license:             GPLv3
 author:              "Mattia Martelli"
 maintainer:          "mattia.martelli@live.it"
@@ -10,7 +10,7 @@ extra-source-files:
 - README.md
 - ChangeLog.md
 
-description:         Progetto con l'estensione degli assiomi di Peano agli interi.
+description:         Progetto con varie estensioni degli assiomi di Peano.
 
 dependencies:
 - base >= 4.7 && < 5
@@ -19,12 +19,12 @@ library:
   source-dirs: src
 
 tests:
-  PeanoZ-test:
-    main:                Spec.hs
+  Peano-test:
+    main:                Test.hs
     source-dirs:         test
     ghc-options:
     - -threaded
     - -rtsopts
     - -with-rtsopts=-N
     dependencies:
-    - PeanoZ
+    - Peano

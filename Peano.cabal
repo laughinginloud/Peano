@@ -1,10 +1,10 @@
 cabal-version: 1.12
 
-name:           PeanoZ
+name:           Peano
 version:        0.1.0.0
-description:    Progetto con l'estensione degli assiomi di Peano agli interi.
-homepage:       https://github.com/laughinginloud/PeanoZ#readme
-bug-reports:    https://github.com/laughinginloud/PeanoZ/issues
+description:    Progetto con varie estensioni degli assiomi di Peano.
+homepage:       https://github.com/laughinginloud/Peano#readme
+bug-reports:    https://github.com/laughinginloud/Peano/issues
 author:         Mattia Martelli
 maintainer:     mattia.martelli@live.it
 copyright:      2020 Mattia Martelli
@@ -17,7 +17,7 @@ extra-source-files:
 
 source-repository head
   type: git
-  location: https://github.com/laughinginloud/PeanoZ
+  location: https://github.com/laughinginloud/Peano
 
 library
   exposed-modules:
@@ -25,7 +25,7 @@ library
     , PeanoQ
     , Bonus
   other-modules:
-      Paths_PeanoZ
+      Paths_Peano
   hs-source-dirs:
       src
   build-depends:
@@ -34,16 +34,18 @@ library
     , primes
   default-language: Haskell2010
 
-test-suite PeanoZ-test
+test-suite Peano-test
   type: exitcode-stdio-1.0
-  main-is: Spec.hs
+  main-is: Test.hs
   other-modules:
-      Paths_PeanoZ
+      Paths_Peano
+    , Stampa
+    , TestZ
   hs-source-dirs:
       test
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-depends:
-      PeanoZ
+      Peano
     , base >=4.7 && <5
     , ansi-terminal
   default-language: Haskell2010
